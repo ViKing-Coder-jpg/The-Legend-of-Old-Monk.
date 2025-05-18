@@ -8,14 +8,11 @@ const gravity=0.7
 
 
 
-
-
-
 //Player
 const player = new Fighter({
    position:{ 
-    x:0,
-    y:0},
+    x:10,
+    y:303},
     velocity:{
     x:0,
     y:0},
@@ -110,8 +107,8 @@ const player = new Fighter({
 //Enemy
 const Enemy = new Fighter({
     position:{ 
-     x:400,
-     y:100},
+     x:900,
+     y:303},
      velocity:{
      x:0,
      y:0},
@@ -233,7 +230,6 @@ window.addEventListener("keydown",(event)=>{
             Enemy.attack()
             break
     }}
-    console.log(event.key)
 })
 window.addEventListener("keyup",(event)=>{
     if(!player.dead){switch(event.key){
@@ -266,7 +262,6 @@ function animate(){
     }else if(keys.d.pressed && player.lastkey==="d"){
         player.velocity.x=5
         player.direction=1
-        console.log(player.direction)
         player.switchSprite('run')
     }else {
         player.velocity.x=0
@@ -276,7 +271,6 @@ function animate(){
             player.switchSprite("idle_rev")
         }
     }
-    console.log(player.direction)
 
     if(player.velocity.y<0){
         if(player.direction==1){
@@ -284,14 +278,12 @@ function animate(){
         else if(player.direction==-1){
                 player.switchSprite("jump_rev")
             }
-        console.log(player.velocity.y)
     }
     else if(player.velocity.y>0){
         if(player.direction==1){
             player.switchSprite("fall")}
         else if(player.direction==-1){
                 player.switchSprite("fall_rev")}
-        console.log(player.velocity.y)
     }
 
     //collision
