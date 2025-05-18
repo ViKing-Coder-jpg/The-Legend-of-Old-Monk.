@@ -15,9 +15,10 @@ class Sprite {
     this.frameMax = frameMax;
     this.frameCurrent = 0;
     this.frameElapsed = 0;
-    this.frameHold = 10;
+    this.frameHold = 5;
     this.offset = offset;
   }
+  
   draw() {
     c.drawImage(
       this.image,
@@ -30,6 +31,7 @@ class Sprite {
       (this.image.width / this.frameMax) * this.scale,
       this.image.height * this.scale
     );
+    
   }
 
   animateFrame() {
@@ -92,7 +94,7 @@ class Fighter extends Sprite {
     this.attackConnected = false;
     this.frameCurrent = 0;
     this.frameElapsed = 0;
-    this.frameHold = 10;
+    this.frameHold = 5;
     this.sprites = sprites;
     this.isHit = false;
     this.dead = false;
@@ -144,7 +146,7 @@ class Fighter extends Sprite {
     this.switchSprite("hit_rev")}}else{
       if(this.direction==1){
         this.switchSprite("dead")}
-        else if(this.direction==-1){
+      else if(this.direction==-1){
         this.switchSprite("dead_rev")}
       
     }
