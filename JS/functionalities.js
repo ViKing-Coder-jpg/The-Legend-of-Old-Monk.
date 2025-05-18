@@ -28,12 +28,17 @@ const enemyMovementSpeed = 3;
 function updateEnemy() {
     Enemy.update()
     const distance = player.position.x - Enemy.position.x;
-    const attackRangeMin=Enemy.attackBox.offset.x-Enemy.width
+    let attackRangeMin
+    if (Enemy.direction === 1) {
+        attackRangeMin=Enemy.attackBox.offset.x-Enemy.width
+    } else if (Enemy.direction === -1) {
+        attackRangeMin=-Enemy.attackBox.offset.x-Enemy.attackBox.width
+    }
     let attackRange;
     if (Enemy.direction === 1) {
         attackRange = Enemy.attackBox.width + Enemy.attackBox.offset.x;
     } else if (Enemy.direction === -1) {
-        attackRange = Enemy.attackBox.offset.x; 
+        attackRange = -Enemy.attackBox.offset.x; 
     }
     
 
